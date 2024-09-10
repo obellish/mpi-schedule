@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { visualizer } from 'rollup-plugin-visualizer';
 import sassDts from 'vite-plugin-sass-dts';
-import mkcert from 'vite-plugin-mkcert';
+import vike from 'vike/plugin';
 
 const debug = true;
 
@@ -27,5 +27,6 @@ export default defineConfig({
 		visualizer({
 			sourcemap: debug,
 		}),
+		vike({ prerender: true }),
 	],
 });
