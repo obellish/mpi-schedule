@@ -1,18 +1,15 @@
-import { useState } from 'react'
+import { type FC, useState } from "react";
 
-function Card() {
-  const [count, setCount] = useState(0)
+export const Card: FC = () => {
+    const [count, setCount] = useState(0);
 
-  return (
-    <div className="card">
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-    </div>
-  )
+    return (
+        <div>
+            <button onClick={() => setCount(c => c + 1)}>
+                Increment: {count}
+            </button>
+        </div>
+    )
 }
 
-export default Card
+export default Card;
