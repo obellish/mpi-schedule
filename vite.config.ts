@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react-swc';
 import { visualizer } from 'rollup-plugin-visualizer';
 import sassDts from 'vite-plugin-sass-dts';
 import vike from 'vike/plugin';
+import { resolve } from 'node:path';
 
 const debug = true;
 
@@ -11,6 +12,20 @@ export default defineConfig({
 	css: {
 		modules: {
 			generateScopedName: debug ? '[name]_[local]_[hash:base64:5]' : '[hash:base64:5]'
+		},
+		preprocessorOptions: {
+			scss: {
+				importer(...args: string[]) {
+					console.log(args);
+					if (args[0] !== '@/styles') {
+						return;
+					}
+
+					return {
+						file: resolve(__dirname, 'src', 'assets', 'styles')
+					}
+				}
+			}
 		}
 	},
 	clearScreen: false,
