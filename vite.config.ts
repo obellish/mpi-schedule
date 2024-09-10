@@ -14,10 +14,6 @@ export default defineConfig({
 		}
 	},
 	clearScreen: false,
-	server: {
-		strictPort: true,
-		https: true,
-	},
 	build: {
 		minify: !debug ? 'esbuild' : false,
 		sourcemap: debug,
@@ -31,6 +27,5 @@ export default defineConfig({
 		visualizer({
 			sourcemap: debug,
 		}),
-		mkcert(),
 	],
 });
