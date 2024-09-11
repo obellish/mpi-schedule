@@ -39,7 +39,7 @@ const startServer = async (): Promise<void> => {
         if (res.writeEarlyHints) res.writeEarlyHints({ link: httpResponse.earlyHints.map(e => e.earlyHintLink) });
         httpResponse.headers.forEach(([name, value]) => res.setHeader(name, value));
         res.status(httpResponse.statusCode);
-        res.send(httpResponse.body);
+        httpResponse.pipe(res);
     });
 
     const port = process.env.PORT || 5173;
