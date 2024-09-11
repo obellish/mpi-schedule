@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { visualizer } from 'rollup-plugin-visualizer';
 import vike from 'vike/plugin';
+import sassDts from 'vite-plugin-sass-dts';
 
 const debug = true;
 
@@ -24,5 +25,8 @@ export default defineConfig({
 			sourcemap: debug,
 		}),
 		vike({ prerender: true }),
+		sassDts({
+			enabledMode: ['production', 'development'],
+		}),
 	],
 });

@@ -6,23 +6,23 @@ import type { OnRenderHtmlAsync } from 'vike/types';
 import getPageTitle from './getPageTitle';
 
 export const onRenderHtml: OnRenderHtmlAsync = async (
-    pageContext,
+	pageContext,
 ): ReturnType<OnRenderHtmlAsync> => {
-    const Page = pageContext.Page as FC;
-    if (!Page) throw new Error('My onRenderHtml() hook expects pageContext.Page to be defined');
+	const Page = pageContext.Page as FC;
+	if (!Page) throw new Error('My onRenderHtml() hook expects pageContext.Page to be defined');
 
-    const pageHtml = ReactDOMServer.renderToString(
-        <Layout pageContext={pageContext}>
-            <Page />
-        </Layout>,
-    );
+	const pageHtml = ReactDOMServer.renderToString(
+		<Layout pageContext={pageContext}>
+			<Page />
+		</Layout>,
+	);
 
-    const title = getPageTitle(pageContext);
-    const desc =
-        // @ts-expect-error data and config are both poorly typed
-        pageContext.data?.description || pageContext.config.description || 'Demo of using Vike';
+	const title = getPageTitle(pageContext);
+	const desc =
+		// @ts-expect-error data and config are both poorly typed
+		pageContext.data?.description || pageContext.config.description || 'Demo of using Vike';
 
-    const documentHtml = escapeInject`<!DOCTYPE html>
+	const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -35,8 +35,8 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
       </body>
     </html>`;
 
-    return {
-        documentHtml,
-        pageContext: {},
-    };
+	return {
+		documentHtml,
+		pageContext: {},
+	};
 };

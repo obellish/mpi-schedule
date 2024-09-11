@@ -5,6 +5,7 @@ import { PageContextProvider } from './usePageContext';
 import { CommonProps } from '../types';
 import './css/index.css';
 import './Layout.css';
+import style from './Layout.module.scss';
 
 export interface LayoutProps extends CommonProps {
 	pageContext: PageContext;
@@ -16,7 +17,7 @@ export const Layout: FC<LayoutProps> = ({ children, pageContext }) => {
 			<PageContextProvider pageContext={pageContext}>
 				<Frame>
 					<Sidebar>
-						<Link href="/">Welcome</Link>
+						<Link href='/'>Welcome</Link>
 					</Sidebar>
 					<Content>{children}</Content>
 				</Frame>
@@ -26,26 +27,17 @@ export const Layout: FC<LayoutProps> = ({ children, pageContext }) => {
 };
 
 const Frame: FC<CommonProps> = ({ children }) => {
-	return <div className='frame'>{children}</div>;
+	return <div className={style.frame}>{children}</div>;
 };
 
 const Sidebar: FC<CommonProps> = ({ children }) => {
-	return (
-		<div
-			id="sidebar"
-			className='sidebar'
-		>
-			{children}
-		</div>
-	);
+	return <div className={style.sidebar}>{children}</div>;
 };
 
 const Content: FC<CommonProps> = ({ children }) => {
 	return (
-		<div id="page-container">
-			<div id="page-content" className='content'>
-				{children}
-			</div>
+		<div id='page-container'>
+			<div id='page-content' className={style.content}>{children}</div>
 		</div>
 	);
 };
