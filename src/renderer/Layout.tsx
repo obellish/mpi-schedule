@@ -37,7 +37,9 @@ const Sidebar: FC<CommonProps> = ({ children }) => {
 const Content: FC<CommonProps> = ({ children }) => {
 	return (
 		<div id='page-container'>
-			<div id='page-content' className={style.content}>{children}</div>
+			<div id='page-content' className={style.content}>
+				{children}
+			</div>
 		</div>
 	);
 };
