@@ -3,7 +3,8 @@ import Link from './Link';
 import type { PageContext } from 'vike/types';
 import { PageContextProvider } from './usePageContext';
 import { CommonProps } from '../types';
-import styles from './Layout.module.scss';
+import './css/index.css';
+import './Layout.css';
 
 export interface LayoutProps extends CommonProps {
 	pageContext: PageContext;
@@ -25,21 +26,14 @@ export const Layout: FC<LayoutProps> = ({ children, pageContext }) => {
 };
 
 const Frame: FC<CommonProps> = ({ children }) => {
-	return <div style={{ display: 'flex', maxWidth: 900, margin: 'auto' }}>{children}</div>;
+	return <div className='frame'>{children}</div>;
 };
 
 const Sidebar: FC<CommonProps> = ({ children }) => {
 	return (
 		<div
 			id="sidebar"
-			style={{
-				padding: 20,
-				flexShrink: 0,
-				display: 'flex',
-				flexDirection: 'column',
-				lineHeight: '1.8em',
-				borderRight: '2px solid #eee',
-			}}
+			className='sidebar'
 		>
 			{children}
 		</div>
@@ -49,7 +43,7 @@ const Sidebar: FC<CommonProps> = ({ children }) => {
 const Content: FC<CommonProps> = ({ children }) => {
 	return (
 		<div id="page-container">
-			<div id="page-content" style={{ padding: 20, paddingBottom: 50, minHeight: '100vh' }}>
+			<div id="page-content" className='content'>
 				{children}
 			</div>
 		</div>

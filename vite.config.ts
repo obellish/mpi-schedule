@@ -38,6 +38,12 @@ export default defineConfig({
 		react(),
 		sassDts({
 			enabledMode: ['development', 'production'],
+			global: {
+				generate: true,
+				outputFilePath: resolve(__dirname, 'src', 'style.d.ts')
+			},
+			sourceDir: resolve(__dirname, 'src'),
+			outputDir: resolve(__dirname, 'dist'),
 		}),
 		visualizer({
 			sourcemap: debug,
