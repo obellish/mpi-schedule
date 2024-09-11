@@ -3,8 +3,7 @@ import Link from './Link';
 import type { PageContext } from 'vike/types';
 import { PageContextProvider } from './usePageContext';
 import { CommonProps } from '../types';
-import './css/index.css';
-import './Layout.css';
+import '../index.scss';
 import style from './Layout.module.scss';
 
 export interface LayoutProps extends CommonProps {
