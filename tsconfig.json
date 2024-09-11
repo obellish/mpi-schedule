@@ -25,6 +25,8 @@
 		"composite": true
 	},
 	"include": [
-		"src"
+		"src",
+		"packages/",
+		"scripts/"
 	]
 }

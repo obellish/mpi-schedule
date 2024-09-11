@@ -24,7 +24,11 @@ export default defineConfig({
 		visualizer({
 			sourcemap: debug,
 		}),
-		vike({ prerender: true }),
+		vike({
+			prerender: {
+				partial: true,
+			}
+		}),
 		sassDts({
 			enabledMode: ['production', 'development'],
 		}),
